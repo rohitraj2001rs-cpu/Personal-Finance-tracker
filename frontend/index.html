@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FinanceFlow</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <span class="brand">₹ FinanceFlow</span>
+      <span class="muted">Personal Finance Tracker</span>
+    </div>
+    <button id="logoutBtn" class="ghost hidden">Logout</button>
+  </header>
+
+  <main class="container">
+    <section id="authView" class="card auth-card">
+      <h1>Take control of your money.</h1>
+      <p class="muted">Track income, expenses and spending categories in one place.</p>
+      <div class="tabs">
+        <button id="loginTab" class="active">Login</button>
+        <button id="registerTab">Create account</button>
+      </div>
+
+      <form id="authForm">
+        <input id="name" placeholder="Full name" autocomplete="name" class="register-only">
+        <input id="email" type="email" placeholder="Email" required autocomplete="email">
+        <input id="password" type="password" placeholder="Password" required minlength="6" autocomplete="current-password">
+        <button class="primary" type="submit">Continue</button>
+        <p id="authMessage" class="message"></p>
+      </form>
+    </section>
+
+    <section id="dashboardView" class="hidden">
+      <div class="hero">
+        <div>
+          <p class="eyebrow">OVERVIEW</p>
+          <h1>Welcome, <span id="userName">there</span> 👋</h1>
+          <p class="muted">A simple view of your financial activity.</p>
+        </div>
+        <button id="openFormBtn" class="primary">+ Add transaction</button>
+      </div>
+
+      <div class="stats">
+        <article class="stat"><span>Balance</span><strong id="balance">₹0</strong></article>
+        <article class="stat"><span>Total income</span><strong id="income">₹0</strong></article>
+        <article class="stat"><span>Total expense</span><strong id="expense">₹0</strong></article>
+        <article class="stat"><span>Transactions</span><strong id="count">0</strong></article>
+      </div>
+
+      <div class="grid">
+        <section class="card">
+          <div class="section-title">
+            <h2>Transactions</h2>
+            <select id="typeFilter">
+              <option value="">All</option>
+              <option value="income">Income</option>
+              <option value="expense">Expense</option>
+            </select>
+          </div>
+          <div id="transactions"></div>
+        </section>
+
+        <section class="card">
+          <h2>Expense categories</h2>
+          <div id="categories"></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="transactionDialog">
+    <form id="transactionForm" method="dialog">
+      <div class="section-title">
+        <h2>Add transaction</h2>
+        <button type="button" id="closeDialog" class="icon">×</button>
+      </div>
+      <select id="txType" required>
+        <option value="expense">Expense</option>
+        <option value="income">Income</option>
+      </select>
+      <input id="txAmount" type="number" step="0.01" min="0.01" placeholder="Amount" required>
+      <input id="txCategory" placeholder="Category (e.g. Food)" required>
+      <input id="txDescription" placeholder="Description">
+      <input id="txDate" type="date" required>
+      <button class="primary" type="submit">Save transaction</button>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

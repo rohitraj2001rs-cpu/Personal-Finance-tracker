@@ -1,0 +1,13 @@
+node_modules/
+.env
+.env.*
+!.env.example
+dist/
+build/
+.gradle/
+.idea/
+*.iml
+local.properties
+.DS_Store
+Thumbs.db
+coverage/
